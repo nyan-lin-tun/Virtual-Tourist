@@ -7,4 +7,17 @@
 //
 
 import Foundation
+import CoreData
 
+class DataController {
+    
+    let persistentContainer:NSPersistentContainer
+    
+    var viewContext:NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    init(modelName:String) {
+        persistentContainer = NSPersistentContainer(name: modelName)
+    }
+}

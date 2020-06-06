@@ -28,21 +28,35 @@ class MapViewController: UIViewController {
         let location = sender.location(in: mapView)
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
         
-        if sender.state == .began {
-            
+        switch sender.state {
+        case .began:
+            self.pinAnnotation = MKPointAnnotation()
+            self.pinAnnotation!.coordinate = coordinate
+            print("\(#function) Coordinate: \(coordinate.latitude),\(coordinate.longitude)")
+            self.mapView.addAnnotation(self.pinAnnotation!)
+        case .changed:
+            self.pinAnnotation!.coordinate = coordinate
+        case .ended:
+            print("ended")
+        default:
+            print("defautl")
         }
-        print("Press")
-//       switch sender.state {
-//       case .began:
-//           let pressMapCoordinate = mapView.convert(sender.location(in: mapView), toCoordinateFrom: mapView)
-//           createPin(forCoordinate: pressMapCoordinate)
-//       default:
-//           break
-//       }
-   }
+        
+    }
+    
+    fileprivate func createAnnotation() {
+        
+    }
+    
+    
+    
+
     
 }
 
 extension MapViewController: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+    }
 }
