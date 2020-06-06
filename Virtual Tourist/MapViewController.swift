@@ -19,7 +19,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        // Do any additional setup after loading the view.
     }
 
     
