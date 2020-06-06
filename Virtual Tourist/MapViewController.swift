@@ -27,7 +27,6 @@ class MapViewController: UIViewController {
         
         let location = sender.location(in: mapView)
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-        
         switch sender.state {
         case .began:
             self.pinAnnotation = MKPointAnnotation()
