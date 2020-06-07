@@ -17,6 +17,7 @@
 		46C381E0248BF83C0052CC5A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381DF248BF83C0052CC5A /* DataController.swift */; };
 		46C381E3248C1A540052CC5A /* Location+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381E2248C1A540052CC5A /* Location+Extension.swift */; };
 		46C381E7248C1A780052CC5A /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381E6248C1A780052CC5A /* Photo+Extension.swift */; };
+		46C381EB248D042C0052CC5A /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381EA248D042C0052CC5A /* LocationAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		46C381DF248BF83C0052CC5A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		46C381E2248C1A540052CC5A /* Location+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extension.swift"; sourceTree = "<group>"; };
 		46C381E6248C1A780052CC5A /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
+		46C381EA248D042C0052CC5A /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		464A103A247C174100801B5D /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				46C381E8248C1C3F0052CC5A /* ViewController */,
 				46C381DE248BF8350052CC5A /* Model */,
 				464A103B247C174100801B5D /* AppDelegate.swift */,
 				464A103D247C174100801B5D /* SceneDelegate.swift */,
@@ -82,6 +85,7 @@
 				46C381E1248C1A3E0052CC5A /* Managed Object Extensions */,
 				46C381DB248BF0530052CC5A /* VirtualTourist.xcdatamodeld */,
 				46C381DF248BF83C0052CC5A /* DataController.swift */,
+				46C381EA248D042C0052CC5A /* LocationAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,6 +97,13 @@
 				46C381E6248C1A780052CC5A /* Photo+Extension.swift */,
 			);
 			path = "Managed Object Extensions";
+			sourceTree = "<group>";
+		};
+		46C381E8248C1C3F0052CC5A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 			files = (
 				46C381E0248BF83C0052CC5A /* DataController.swift in Sources */,
 				46C381E7248C1A780052CC5A /* Photo+Extension.swift in Sources */,
+				46C381EB248D042C0052CC5A /* LocationAnnotation.swift in Sources */,
 				46C381DD248BF0530052CC5A /* VirtualTourist.xcdatamodeld in Sources */,
 				464A1040247C174100801B5D /* MapViewController.swift in Sources */,
 				464A103C247C174100801B5D /* AppDelegate.swift in Sources */,
