@@ -31,6 +31,7 @@
 		464A1044247C174200801B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		464A1047247C174200801B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		464A1049247C174200801B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46982F51248D934F009CB667 /* FlickrKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlickrKey.xcconfig; sourceTree = "<group>"; };
 		46C381DC248BF0530052CC5A /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 		46C381DF248BF83C0052CC5A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		46C381E2248C1A540052CC5A /* Location+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extension.swift"; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		464A103A247C174100801B5D /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				46982F50248D931C009CB667 /* Secret */,
 				46C381E8248C1C3F0052CC5A /* ViewController */,
 				46C381DE248BF8350052CC5A /* Model */,
 				464A103B247C174100801B5D /* AppDelegate.swift */,
@@ -80,6 +82,14 @@
 				464A1049247C174200801B5D /* Info.plist */,
 			);
 			path = "Virtual Tourist";
+			sourceTree = "<group>";
+		};
+		46982F50248D931C009CB667 /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				46982F51248D934F009CB667 /* FlickrKey.xcconfig */,
+			);
+			path = Secret;
 			sourceTree = "<group>";
 		};
 		46C381DE248BF8350052CC5A /* Model */ = {
