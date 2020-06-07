@@ -22,19 +22,33 @@
                                     <outletCollection property="gestureRecognizers" destination="3GF-xK-aiO" appends="YES" id="4tM-2a-3rf"/>
                                 </connections>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap pins to delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nH-KI-rWp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LYe-j6-gg9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="4p2-x1-Vll" secondAttribute="bottom" id="B57-PR-EdF"/>
                             <constraint firstItem="4p2-x1-Vll" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Eh2-lb-aVv"/>
                             <constraint firstItem="4p2-x1-Vll" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NDb-T7-PEY"/>
+                            <constraint firstItem="3nH-KI-rWp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Pnq-3p-MGV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3nH-KI-rWp" secondAttribute="trailing" id="SIo-Fk-0i1"/>
                             <constraint firstItem="4p2-x1-Vll" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SQm-Le-bnu"/>
+                            <constraint firstItem="3nH-KI-rWp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="crH-oz-iV8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="i6g-h1-w4g"/>
                     <connections>
                         <outlet property="mapView" destination="4p2-x1-Vll" id="vAS-Q6-Ph5"/>
+                        <outlet property="tapToDeletePinsLabel" destination="3nH-KI-rWp" id="qNm-kE-84Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

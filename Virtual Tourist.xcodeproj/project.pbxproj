@@ -18,6 +18,8 @@
 		46C381E3248C1A540052CC5A /* Location+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381E2248C1A540052CC5A /* Location+Extension.swift */; };
 		46C381E7248C1A780052CC5A /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381E6248C1A780052CC5A /* Photo+Extension.swift */; };
 		46C381EB248D042C0052CC5A /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381EA248D042C0052CC5A /* LocationAnnotation.swift */; };
+		46C381EE248D78BB0052CC5A /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381ED248D78BB0052CC5A /* CoreDataStack.swift */; };
+		46C381F0248D79550052CC5A /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381EF248D79550052CC5A /* ViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		46C381E2248C1A540052CC5A /* Location+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extension.swift"; sourceTree = "<group>"; };
 		46C381E6248C1A780052CC5A /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
 		46C381EA248D042C0052CC5A /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
+		46C381ED248D78BB0052CC5A /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		46C381EF248D79550052CC5A /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +74,6 @@
 				46C381DE248BF8350052CC5A /* Model */,
 				464A103B247C174100801B5D /* AppDelegate.swift */,
 				464A103D247C174100801B5D /* SceneDelegate.swift */,
-				464A103F247C174100801B5D /* MapViewController.swift */,
 				464A1041247C174100801B5D /* Main.storyboard */,
 				464A1044247C174200801B5D /* Assets.xcassets */,
 				464A1046247C174200801B5D /* LaunchScreen.storyboard */,
@@ -86,6 +89,7 @@
 				46C381DB248BF0530052CC5A /* VirtualTourist.xcdatamodeld */,
 				46C381DF248BF83C0052CC5A /* DataController.swift */,
 				46C381EA248D042C0052CC5A /* LocationAnnotation.swift */,
+				46C381ED248D78BB0052CC5A /* CoreDataStack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -102,6 +106,8 @@
 		46C381E8248C1C3F0052CC5A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				464A103F247C174100801B5D /* MapViewController.swift */,
+				46C381EF248D79550052CC5A /* ViewController+Extensions.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -180,8 +186,10 @@
 				46C381E0248BF83C0052CC5A /* DataController.swift in Sources */,
 				46C381E7248C1A780052CC5A /* Photo+Extension.swift in Sources */,
 				46C381EB248D042C0052CC5A /* LocationAnnotation.swift in Sources */,
+				46C381EE248D78BB0052CC5A /* CoreDataStack.swift in Sources */,
 				46C381DD248BF0530052CC5A /* VirtualTourist.xcdatamodeld in Sources */,
 				464A1040247C174100801B5D /* MapViewController.swift in Sources */,
+				46C381F0248D79550052CC5A /* ViewController+Extensions.swift in Sources */,
 				464A103C247C174100801B5D /* AppDelegate.swift in Sources */,
 				46C381E3248C1A540052CC5A /* Location+Extension.swift in Sources */,
 				464A103E247C174100801B5D /* SceneDelegate.swift in Sources */,
