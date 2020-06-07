@@ -150,7 +150,9 @@ extension MapViewController: MKMapViewDelegate {
                     ///Below code doesn't work after clear recent and try to delete the old pins from UI
 //                    self.mapView.removeAnnotation(annotation)
                 }else {
-                    
+                    //User click to annotation
+                    print("-------------------")
+                    GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude)
                 }
             }else {
                 self.displayAlert(message: "Cannot get location.")

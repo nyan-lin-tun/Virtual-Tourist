@@ -13,6 +13,9 @@
 		464A1043247C174100801B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464A1041247C174100801B5D /* Main.storyboard */; };
 		464A1045247C174200801B5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464A1044247C174200801B5D /* Assets.xcassets */; };
 		464A1048247C174200801B5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 464A1046247C174200801B5D /* LaunchScreen.storyboard */; };
+		46982F54248D9701009CB667 /* GenericNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46982F53248D9701009CB667 /* GenericNetwork.swift */; };
+		46982F57248D9AE7009CB667 /* LocalReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46982F56248D9AE7009CB667 /* LocalReachability.swift */; };
+		46A9A2DA248DA68E00FEB565 /* FlickrKey.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 46982F51248D934F009CB667 /* FlickrKey.xcconfig */; };
 		46C381DD248BF0530052CC5A /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46C381DB248BF0530052CC5A /* VirtualTourist.xcdatamodeld */; };
 		46C381E0248BF83C0052CC5A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381DF248BF83C0052CC5A /* DataController.swift */; };
 		46C381E3248C1A540052CC5A /* Location+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C381E2248C1A540052CC5A /* Location+Extension.swift */; };
@@ -32,6 +35,8 @@
 		464A1047247C174200801B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		464A1049247C174200801B5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46982F51248D934F009CB667 /* FlickrKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlickrKey.xcconfig; sourceTree = "<group>"; };
+		46982F53248D9701009CB667 /* GenericNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericNetwork.swift; sourceTree = "<group>"; };
+		46982F56248D9AE7009CB667 /* LocalReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalReachability.swift; sourceTree = "<group>"; };
 		46C381DC248BF0530052CC5A /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 		46C381DF248BF83C0052CC5A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		46C381E2248C1A540052CC5A /* Location+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extension.swift"; sourceTree = "<group>"; };
@@ -71,6 +76,8 @@
 		464A103A247C174100801B5D /* Virtual Tourist */ = {
 			isa = PBXGroup;
 			children = (
+				46982F55248D9ADA009CB667 /* Utilities */,
+				46982F52248D96F7009CB667 /* Network */,
 				46982F50248D931C009CB667 /* Secret */,
 				46C381E8248C1C3F0052CC5A /* ViewController */,
 				46C381DE248BF8350052CC5A /* Model */,
@@ -90,6 +97,22 @@
 				46982F51248D934F009CB667 /* FlickrKey.xcconfig */,
 			);
 			path = Secret;
+			sourceTree = "<group>";
+		};
+		46982F52248D96F7009CB667 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				46982F53248D9701009CB667 /* GenericNetwork.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		46982F55248D9ADA009CB667 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				46982F56248D9AE7009CB667 /* LocalReachability.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		46C381DE248BF8350052CC5A /* Model */ = {
@@ -180,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A9A2DA248DA68E00FEB565 /* FlickrKey.xcconfig in Resources */,
 				464A1048247C174200801B5D /* LaunchScreen.storyboard in Resources */,
 				464A1045247C174200801B5D /* Assets.xcassets in Resources */,
 				464A1043247C174100801B5D /* Main.storyboard in Resources */,
@@ -193,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46982F57248D9AE7009CB667 /* LocalReachability.swift in Sources */,
 				46C381E0248BF83C0052CC5A /* DataController.swift in Sources */,
 				46C381E7248C1A780052CC5A /* Photo+Extension.swift in Sources */,
 				46C381EB248D042C0052CC5A /* LocationAnnotation.swift in Sources */,
@@ -200,6 +225,7 @@
 				46C381DD248BF0530052CC5A /* VirtualTourist.xcdatamodeld in Sources */,
 				464A1040247C174100801B5D /* MapViewController.swift in Sources */,
 				46C381F0248D79550052CC5A /* ViewController+Extensions.swift in Sources */,
+				46982F54248D9701009CB667 /* GenericNetwork.swift in Sources */,
 				464A103C247C174100801B5D /* AppDelegate.swift in Sources */,
 				46C381E3248C1A540052CC5A /* Location+Extension.swift in Sources */,
 				464A103E247C174100801B5D /* SceneDelegate.swift in Sources */,
@@ -230,6 +256,7 @@
 /* Begin XCBuildConfiguration section */
 		464A104A247C174200801B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46982F51248D934F009CB667 /* FlickrKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -290,6 +317,7 @@
 		};
 		464A104B247C174200801B5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46982F51248D934F009CB667 /* FlickrKey.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -344,6 +372,7 @@
 		};
 		464A104D247C174200801B5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46982F51248D934F009CB667 /* FlickrKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +391,7 @@
 		};
 		464A104E247C174200801B5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46982F51248D934F009CB667 /* FlickrKey.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
