@@ -33,9 +33,7 @@ class PhotoListViewController: UIViewController {
         let images = fetchedResultsController.fetchedObjects
         if images!.isEmpty {
             if LocalReachability.isConnectedToNetwork() {
-                DispatchQueue.main.async {
-                    self.handleActivityIndicator(downloading: true)
-                }
+                self.handleActivityIndicator(downloading: true)
                 GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude, completion: self.photoResponseHandler(photoList:error:))
             }else {
                 self.displayAlert(title: "Please connect to internet")
@@ -55,9 +53,7 @@ class PhotoListViewController: UIViewController {
     @IBAction func newCollectionAction(_ sender: UIButton) {
         if LocalReachability.isConnectedToNetwork() {
             self.removeAllPhotoFromsCoreData()
-            DispatchQueue.main.async {
-                self.handleActivityIndicator(downloading: true)
-            }
+            self.handleActivityIndicator(downloading: true)
             GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude, completion: self.photoResponseHandler(photoList:error:))
         }else {
             self.displayAlert(title: "Please connect to the internet")
@@ -121,14 +117,17 @@ class PhotoListViewController: UIViewController {
     }
     
     func handleActivityIndicator(downloading: Bool)  {
-        if downloading {
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        } else {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
+        DispatchQueue.main.async {
+            if downloading {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+            }
+            self.newCollectionButton.isEnabled = !downloading
         }
-        self.newCollectionButton.isEnabled = !downloading
+        
     }
         
     private func setUpFlowLayout() {
