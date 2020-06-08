@@ -19,33 +19,20 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tapToDeletePinsLabel: UILabel!
     
-//    var locations:[Location] = []
-    var fetchedResultsController: NSFetchedResultsController<Location>!
+    var locations:[Location] = []
     
     private func setUpFetchedResult() {
         let fetchRequest:NSFetchRequest<Location> = Location.fetchRequest()
         let sortDescriptors = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptors]
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "locations")
-        fetchedResultsController.delegate = self
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            fatalError("The fetch could not be performed. \(error.localizedDescription)")
+        if let result = try? dataController.viewContext.fetch(fetchRequest) {
+            self.locations = result
         }
-        
-        
-//        if let result = try? dataController.viewContext.fetch(fetchRequest) {
-//            self.locations = result
-//        }
         self.displayAnnotationFromCoreData()
     }
-       
     
     private func displayAnnotationFromCoreData() {
-//        let annotations = self.locations
-        let annotations = fetchedResultsController.fetchedObjects ?? []
+        let annotations = self.locations
         self.mapView.addAnnotations(annotations.map {
             LocationAnnotation(location: $0)
         })
@@ -59,7 +46,6 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setUpFetchedResult()
     }
     
     override func viewDidLoad() {
@@ -68,19 +54,14 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         self.tapToDeletePinsLabel.isHidden = true
         self.navigationItem.rightBarButtonItem = editButtonItem
         mapView.delegate = self
-//        self.setUpFetchedResult()
+        self.setUpFetchedResult()
     }
-    
-    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.fetchedResultsController = nil
     }
 
-    
     @IBAction func addPinAction(_ sender: UILongPressGestureRecognizer) {
-        
         let location = sender.location(in: mapView)
         let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
         switch sender.state {
@@ -138,8 +119,7 @@ extension MapViewController: MKMapViewDelegate {
             pinView!.animatesDrop = true
             pinView!.rightCalloutAccessoryView = UIButton(type: .infoLight)
             pinView!.pinTintColor = UIColor.red
-        }
-        else {
+        } else {
             pinView!.annotation = annotation
         }
         return pinView
@@ -156,20 +136,10 @@ extension MapViewController: MKMapViewDelegate {
                 if isEditing {
                     dataController.viewContext.delete(location)
                     CoreDataStack.saveToCoreData(dataController: self.dataController)
-                    
-//                    mapView.removeAnnotations(mapView.annotations)
-//                    self.setUpFetchedResult()
-                    
-                    ///Below code doesn't work after clear recent and try to delete the old pins from UI
                     self.mapView.removeAnnotation(annotation)
                 }else {
-                    //User click to annotation
-                    print("-------------------")
-                    
-                    print(type(of: location))
                     GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude)
                     let photoListViewController = PhotoListViewController()
-                    
                     self.navigationController?.pushViewController(photoListViewController, animated: true)
                 }
             }else {
@@ -178,8 +148,6 @@ extension MapViewController: MKMapViewDelegate {
         } catch {
             fatalError()
         }
-        
-
     }
 }
 

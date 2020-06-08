@@ -11,7 +11,7 @@
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="location" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="photos" inverseEntity="Location"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="photos" inverseEntity="Location"/>
     </entity>
     <elements>
         <element name="Location" positionX="211.38671875" positionY="23.6953125" width="128" height="103"/>

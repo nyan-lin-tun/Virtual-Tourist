@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-    
 
     class func saveToCoreData(dataController: DataController) {
         dataController.viewContext.performAndWait {

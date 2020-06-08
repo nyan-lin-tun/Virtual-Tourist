@@ -13,9 +13,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    let dataController = DataController(modelName: "VirtualTourist")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
         return true
     }
 
@@ -31,17 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-//        self.saveViewContext()
+
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-//        self.saveViewContext()
+
     }
     
-    func saveViewContext() {
-       try? dataController.viewContext.save()
-    }
-
 
 }
 
