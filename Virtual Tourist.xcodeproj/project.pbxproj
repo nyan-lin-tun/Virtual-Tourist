@@ -91,6 +91,25 @@
 			path = "Virtual Tourist";
 			sourceTree = "<group>";
 		};
+		46645FF3248DAC0B00E3C286 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				46C381E1248C1A3E0052CC5A /* Managed Object Extensions */,
+				46C381DB248BF0530052CC5A /* VirtualTourist.xcdatamodeld */,
+				46C381DF248BF83C0052CC5A /* DataController.swift */,
+				46C381EA248D042C0052CC5A /* LocationAnnotation.swift */,
+				46C381ED248D78BB0052CC5A /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		46645FF4248DAC1600E3C286 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		46982F50248D931C009CB667 /* Secret */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,11 +137,8 @@
 		46C381DE248BF8350052CC5A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				46C381E1248C1A3E0052CC5A /* Managed Object Extensions */,
-				46C381DB248BF0530052CC5A /* VirtualTourist.xcdatamodeld */,
-				46C381DF248BF83C0052CC5A /* DataController.swift */,
-				46C381EA248D042C0052CC5A /* LocationAnnotation.swift */,
-				46C381ED248D78BB0052CC5A /* CoreDataStack.swift */,
+				46645FF4248DAC1600E3C286 /* Request */,
+				46645FF3248DAC0B00E3C286 /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
