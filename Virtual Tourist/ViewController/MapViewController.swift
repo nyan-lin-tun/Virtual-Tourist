@@ -155,6 +155,9 @@ extension MapViewController: MKMapViewDelegate {
                     
                     print(type(of: location))
                     GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude)
+                    let photoListViewController = PhotoListViewController()
+                    
+                    self.navigationController?.pushViewController(photoListViewController, animated: true)
                 }
             }else {
                 self.displayAlert(message: "Cannot get location.")
