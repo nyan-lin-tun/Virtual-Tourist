@@ -20,9 +20,8 @@ class PhotoListViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
-    
     @IBOutlet weak var photoCollectionViewFlowLayout: UICollectionViewFlowLayout!
-    
+    @IBOutlet weak var newCollectionButton: UIButton!
     
 
     override func viewDidLoad() {
@@ -33,17 +32,36 @@ class PhotoListViewController: UIViewController {
         
         let images = fetchedResultsController.fetchedObjects
         if images!.isEmpty {
-            print("Fetching")
+            if LocalReachability.isConnectedToNetwork() {
+                DispatchQueue.main.async {
+                    self.handleActivityIndicator(downloading: true)
+                }
+                GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude, completion: self.photoResponseHandler(photoList:error:))
+            }else {
+                self.displayAlert(title: "Please connect to internet")
+            }
+        }
+    }
+    
+
+    fileprivate func removeAllPhotoFromsCoreData() {
+        let photos = fetchedResultsController.fetchedObjects ?? []
+        for photo in photos {
+            let indexPath = fetchedResultsController.indexPath(forObject: photo)!
+            deleteImageOnTap(indexPath)
+        }
+    }
+    
+    @IBAction func newCollectionAction(_ sender: UIButton) {
+        if LocalReachability.isConnectedToNetwork() {
+            self.removeAllPhotoFromsCoreData()
             DispatchQueue.main.async {
                 self.handleActivityIndicator(downloading: true)
             }
             GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude, completion: self.photoResponseHandler(photoList:error:))
+        }else {
+            self.displayAlert(title: "Please connect to the internet")
         }
-        print("Total photo count is \(images!.count)")
-    }
-    
-
-    @IBAction func newCollectionAction(_ sender: UIButton) {
         
     }
     
@@ -62,12 +80,6 @@ class PhotoListViewController: UIViewController {
             fatalError("The fetch could not be performed. \(error.localizedDescription)")
         }
         
-//        if let result = try? dataController.viewContext.fetch(fetchRequest) {
-//            self.images = result
-//        }else {
-//
-//        }
-        
     }
     
     fileprivate func focusLocationOnMap() {
@@ -81,47 +93,42 @@ class PhotoListViewController: UIViewController {
     }
     
     private func photoResponseHandler(photoList: [PhotoResponse], error: Error?) {
-        print("Image urls received")
         if error == nil {
-            print("Getting images")
             if photoList.isEmpty {
-                print("No image for that location")
+                self.displayAlert(title: "There is no images for current location.")
+                self.handleActivityIndicator(downloading: false)
             }else {
                 for photo in photoList {
                     GenericNetwork.getPhotoData(imageInfo: photo, completion: self.photoDataResponseHandler(image:error:))
                 }
             }
-            
         }else {
-            print("Display \(error?.localizedDescription)")
+            self.displayAlert(title: "Error while trying to get images.")
         }
     }
     
     private func photoDataResponseHandler(image: Data?, error: Error?) {
-        print("Image received success")
         if error == nil {
-            print("Image error not nil")
             let photo = Photo(context: dataController.viewContext)
             photo.image = image
             photo.creationDate = Date()
             photo.location = location
             try? dataController.viewContext.save()
-
-            DispatchQueue.main.async {
-                self.handleActivityIndicator(downloading: false)
-            }
+            self.handleActivityIndicator(downloading: false)
         }else {
-            print("Display \(error?.localizedDescription)")
+            self.displayAlert(title: "Error while downloading images.")
         }
     }
     
     func handleActivityIndicator(downloading: Bool)  {
         if downloading {
+            self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
         } else {
             self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
         }
-//        newCollectionButton.isEnabled = !downloadingIn
+        self.newCollectionButton.isEnabled = !downloading
     }
         
     private func setUpFlowLayout() {
@@ -158,8 +165,6 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
         dataController.viewContext.delete(photoToDelete)
         try? dataController.viewContext.save()
     }
-    
-    
     
 }
 

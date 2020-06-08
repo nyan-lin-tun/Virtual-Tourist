@@ -149,6 +149,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="hTP-xP-SIH" id="GO2-op-FYj"/>
                         <outlet property="mapView" destination="6Dn-l3-dl8" id="Wuq-fZ-IW0"/>
+                        <outlet property="newCollectionButton" destination="wnM-Up-LLt" id="6a7-XR-okE"/>
                         <outlet property="photoCollectionView" destination="DK8-Dm-hlM" id="O1T-iF-qq6"/>
                         <outlet property="photoCollectionViewFlowLayout" destination="QzQ-vB-q6W" id="bkY-jQ-D5r"/>
                     </connections>

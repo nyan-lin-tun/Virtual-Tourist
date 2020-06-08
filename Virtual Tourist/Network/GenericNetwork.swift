@@ -24,7 +24,7 @@ class GenericNetwork {
         var stringValue: String {
             switch self {
             case .imageInfoWithLocation(let latitude, let longtitude):
-                return "\(Constants.base)?api_key=\(getFlickrApiKey())&method=\(Constants.searchMethod)&per_page=\(Constants.numberOfPhotos)&format=json&nojsoncallback=?&accuracy=\(Constants.accuracy)&lat=\(latitude)&lon=\(longtitude)&page=\((1...10).randomElement() ?? 1)"
+                return "\(Constants.base)?api_key=\(getFlickrApiKey())&method=\(Constants.searchMethod)&per_page=\(Constants.numberOfPhotos)&format=json&nojsoncallback=?&accuracy=\(Constants.accuracy)&lat=\(latitude)&lon=\(longtitude)&page=\((1...100).randomElement() ?? 1)"
             }
         }
         var url: URL {

@@ -38,11 +38,6 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         })
     }
     
-    private func displayAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,7 +63,6 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         case .began:
             self.pinAnnotation = MKPointAnnotation()
             self.pinAnnotation!.coordinate = coordinate
-            print("\(#function) Coordinate: \(coordinate.latitude),\(coordinate.longitude)")
             self.mapView.addAnnotation(self.pinAnnotation!)
         case .changed:
             self.pinAnnotation!.coordinate = coordinate
@@ -76,7 +70,7 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
             do {
                 try self.createAnnotation(coordinate: coordinate)
             }catch {
-                print("error")
+                self.displayAlert(title: "Error while trying to create location.")
             }
         default:
             print("default")
@@ -130,7 +124,6 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         mapView.deselectAnnotation(annotation, animated: true)
-        print("\(#function) lat \(annotation.coordinate.latitude) lon \(annotation.coordinate.longitude)")
         do {
             if let location = try getLocation(annotation: annotation) {
                 if isEditing {
@@ -145,7 +138,7 @@ extension MapViewController: MKMapViewDelegate {
                     self.navigationController?.pushViewController(photoListViewController, animated: true)
                 }
             }else {
-                self.displayAlert(message: "Cannot get location.")
+                self.displayAlert(title: "Error while trying to get location.")
             }
         } catch {
             fatalError()
