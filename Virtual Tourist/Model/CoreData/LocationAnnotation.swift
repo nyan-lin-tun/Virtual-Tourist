@@ -19,3 +19,4 @@ class LocationAnnotation: MKPointAnnotation {
         self.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
     }
 }
+

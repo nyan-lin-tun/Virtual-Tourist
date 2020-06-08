@@ -152,6 +152,8 @@ extension MapViewController: MKMapViewDelegate {
                 }else {
                     //User click to annotation
                     print("-------------------")
+                    
+                    print(type(of: location))
                     GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude)
                 }
             }else {

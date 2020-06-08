@@ -17,12 +17,54 @@ class GenericNetwork {
         static let numberOfPhotos = 25
     }
     
+    enum Endpoints {
+        
+        case imageInfoWithLocation(Double, Double)
+        
+        var stringValue: String {
+            switch self {
+            case .imageInfoWithLocation(let latitude, let longtitude):
+                return "\(Constants.base)?api_key=\(getFlickrApiKey())&method=\(Constants.searchMethod)&per_page=\(Constants.numberOfPhotos)&format=json&nojsoncallback=?&accuracy=\(Constants.accuracy)&lat=\(latitude)&lon=\(longtitude)&page=\((1...10).randomElement() ?? 1)"
+            }
+        
+        }
+        
+        var url: URL {
+            return URL(string: stringValue)!
+        }
+    }
     
     class func getPhotos(latitude: Double, longtitude: Double) {
-        print("------------------")
-        print(self.getFlickrApiKey())
-        let url = "\(Constants.base)?api_key=\(self.getFlickrApiKey())&method=\(Constants.searchMethod)&per_page=\(Constants.numberOfPhotos)&format=json&nojsoncallback=?&accuracy=\(Constants.accuracy)&lat=\(latitude)&lon=\(longtitude)&page=\((1...10).randomElement() ?? 1)"
+
+        let url = Endpoints.imageInfoWithLocation(latitude, longtitude).url
+        print("-----------")
         print(url)
+        let urlRequest = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            guard let data = data else {
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(FlickrResponse.self, from: data)
+                let images = responseObject.photos.photo
+                var photosUrl:[String] = []
+                for image in images {
+                    let imageUrl = "https://farm\(image.farm).staticflickr.com/\(image.server)/\(image.id)_\(image.secret).jpg"
+                    photosUrl.append(imageUrl)
+//                    let photoURL = "https://farm\(photo["farm"].stringValue).staticflickr.com/\(photo["server"].stringValue)/\(photo["id"])_\(photo["secret"]).jpg"
+                }
+                for i in photosUrl {
+                    print(i)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        }
+        task.resume()
+        
     }
     
 }
