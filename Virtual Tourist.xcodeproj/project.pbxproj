@@ -43,6 +43,7 @@
 		46645FFD248DCEB300E3C286 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		46646000248EACE600E3C286 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		46646005248ECA6800E3C286 /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		46646007248ECF7400E3C286 /* TestKeys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestKeys.xcconfig; sourceTree = "<group>"; };
 		46982F51248D934F009CB667 /* FlickrKey.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = FlickrKey.xcconfig; sourceTree = "<group>"; };
 		46982F53248D9701009CB667 /* GenericNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericNetwork.swift; sourceTree = "<group>"; };
 		46982F56248D9AE7009CB667 /* LocalReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalReachability.swift; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				46982F51248D934F009CB667 /* FlickrKey.xcconfig */,
+				46646007248ECF7400E3C286 /* TestKeys.xcconfig */,
 			);
 			path = Secret;
 			sourceTree = "<group>";
