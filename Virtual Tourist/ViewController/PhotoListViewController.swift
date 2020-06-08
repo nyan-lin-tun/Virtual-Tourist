@@ -12,6 +12,7 @@ import MapKit
 class PhotoListViewController: UIViewController {
     
     var dataController:DataController!
+    var location: Location!
     
     @IBOutlet weak var mapView: MKMapView!
     

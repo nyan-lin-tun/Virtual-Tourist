@@ -15,11 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let dataController = DataController(modelName: "VirtualTourist")
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    dataController.load()
-    let navigationController = window?.rootViewController as! UINavigationController
-    let mapViewController = navigationController.topViewController as! MapViewController
-    mapViewController.dataController = dataController
-    guard let _ = (scene as? UIWindowScene) else { return }
+    
+        guard let _ = (scene as? UIWindowScene) else { return }
+        dataController.load()
+        let navigationController = window?.rootViewController as! UINavigationController
+        let mapViewController = navigationController.topViewController as! MapViewController
+        mapViewController.dataController = dataController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -27,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        self.saveViewContext()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

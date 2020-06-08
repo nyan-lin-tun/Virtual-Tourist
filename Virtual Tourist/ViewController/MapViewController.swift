@@ -19,21 +19,33 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tapToDeletePinsLabel: UILabel!
     
-    var locations:[Location] = []
+//    var locations:[Location] = []
+    var fetchedResultsController: NSFetchedResultsController<Location>!
     
     private func setUpFetchedResult() {
         let fetchRequest:NSFetchRequest<Location> = Location.fetchRequest()
         let sortDescriptors = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptors]
-        if let result = try? dataController.viewContext.fetch(fetchRequest) {
-            self.locations = result
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: "locations")
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed. \(error.localizedDescription)")
         }
+        
+        
+//        if let result = try? dataController.viewContext.fetch(fetchRequest) {
+//            self.locations = result
+//        }
         self.displayAnnotationFromCoreData()
     }
        
     
     private func displayAnnotationFromCoreData() {
-        let annotations = self.locations
+//        let annotations = self.locations
+        let annotations = fetchedResultsController.fetchedObjects ?? []
         self.mapView.addAnnotations(annotations.map {
             LocationAnnotation(location: $0)
         })
@@ -56,13 +68,14 @@ class MapViewController: UIViewController, NSFetchedResultsControllerDelegate {
         self.tapToDeletePinsLabel.isHidden = true
         self.navigationItem.rightBarButtonItem = editButtonItem
         mapView.delegate = self
-        self.setUpFetchedResult()
+//        self.setUpFetchedResult()
     }
     
     
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.fetchedResultsController = nil
     }
 
     
@@ -144,11 +157,11 @@ extension MapViewController: MKMapViewDelegate {
                     dataController.viewContext.delete(location)
                     CoreDataStack.saveToCoreData(dataController: self.dataController)
                     
-                    mapView.removeAnnotations(mapView.annotations)
-                    self.setUpFetchedResult()
+//                    mapView.removeAnnotations(mapView.annotations)
+//                    self.setUpFetchedResult()
                     
                     ///Below code doesn't work after clear recent and try to delete the old pins from UI
-//                    self.mapView.removeAnnotation(annotation)
+                    self.mapView.removeAnnotation(annotation)
                 }else {
                     //User click to annotation
                     print("-------------------")

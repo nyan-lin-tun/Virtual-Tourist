@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        self.saveViewContext()
+//        self.saveViewContext()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveViewContext()
+//        self.saveViewContext()
     }
     
     func saveViewContext() {
