@@ -50,7 +50,7 @@
                     <connections>
                         <outlet property="mapView" destination="4p2-x1-Vll" id="vAS-Q6-Ph5"/>
                         <outlet property="tapToDeletePinsLabel" destination="3nH-KI-rWp" id="qNm-kE-84Y"/>
-                        <segue destination="4N8-2m-lIv" kind="show" identifier="toPhoto" id="rjW-5X-GvX"/>
+                        <segue destination="4N8-2m-lIv" kind="show" identifier="toPhoto" id="HCC-Vg-FPb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -65,7 +65,7 @@
         <!--Photo List View Controller-->
         <scene sceneID="DpC-4b-QA2">
             <objects>
-                <viewController id="4N8-2m-lIv" customClass="PhotoListViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoListViewController" id="4N8-2m-lIv" customClass="PhotoListViewController" customModule="Virtual_Tourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pUu-Hm-290">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uOf-v0-UM4">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="uOf-v0-UM4" customClass="PhotoCollectionViewCell" customModule="Virtual_Tourist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="prF-Fq-9Eu">
@@ -106,6 +106,10 @@
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="4N8-2m-lIv" id="RvQ-I0-CDn"/>
+                                    <outlet property="delegate" destination="4N8-2m-lIv" id="2HV-fc-KxY"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
