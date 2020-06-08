@@ -138,7 +138,6 @@ extension MapViewController: MKMapViewDelegate {
                     CoreDataStack.saveToCoreData(dataController: self.dataController)
                     self.mapView.removeAnnotation(annotation)
                 }else {
-                    GenericNetwork.getPhotos(latitude: annotation.coordinate.latitude, longtitude: annotation.coordinate.longitude)
                     let photoListViewController = storyboard?.instantiateViewController(withIdentifier: "PhotoListViewController") as! PhotoListViewController
                     photoListViewController.dataController = self.dataController
                     photoListViewController.location = location
