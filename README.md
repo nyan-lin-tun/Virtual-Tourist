@@ -1,6 +1,8 @@
 # Virtual-Tourist
 Udacity iOS Nano degree project
 
+The Virtual Tourist app downloads and stores images from Flickr. The app allows users to drop pins on a map, as if they were stops on a tour. Users will then be able to download pictures for the location and persist both the pictures, and the association of the pictures with the pin.
+
 ### Flickr API Keys:
 This app uses the Flickr API to get the photos associated to location. In order to use this app, you'll have to provide your own Flickr API key. To configure it, you'll need to add a new file called <strong>keys.xcconfig</strong>, inside the <strong>Secrets/</strong> folder.
 
