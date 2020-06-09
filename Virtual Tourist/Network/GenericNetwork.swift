@@ -32,43 +32,51 @@ class GenericNetwork {
         }
     }
     
-    class func getPhotos(latitude: Double,
-                         longtitude: Double,
-                         completion: @escaping ([PhotoResponse], Error?) -> Void) {
-
-        let url = Endpoints.imageInfoWithLocation(latitude, longtitude).url
-        let urlRequest = URLRequest(url: url)
-        
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+    private class func taskForGETRequest<ResponseType: Decodable>(url: URL,
+                                                          responseType: ResponseType.Type,
+                                                          completion: @escaping (ResponseType?, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             let decoder = JSONDecoder()
             do {
-                let responseObject = try decoder.decode(FlickrResponse.self, from: data)
-                let images = responseObject.photos.photo
-                completion(images, nil)
-                
-                var photosUrl:[String] = []
-                for image in images {
-                    let imageUrl = "https://farm\(image.farm).staticflickr.com/\(image.server)/\(image.id)_\(image.secret).jpg"
-                    photosUrl.append(imageUrl)
-                }
-                for i in photosUrl {
-                    print(i)
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
                 }
             } catch {
-                completion([], error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
         }
         task.resume()
+    }
+    
+    class func getPhotos(latitude: Double,
+                         longtitude: Double,
+                         completion: @escaping ([PhotoResponse], Error?) -> Void) {
+        let url = Endpoints.imageInfoWithLocation(latitude, longtitude).url
+        self.taskForGETRequest(url: url, responseType: FlickrResponse.self) { (response, error) in
+            if let response = response {
+                completion(response.photos.photo, nil)
+            } else {
+                completion([], error)
+            }
+        }
     }
     
     class func getPhotoData(imageInfo: PhotoResponse,
                             completion: @escaping (Data?, Error?) -> Void) {
         let imageUrl = "https://farm\(imageInfo.farm).staticflickr.com/\(imageInfo.server)/\(imageInfo.id)_\(imageInfo.secret).jpg" + "&api_key=\(self.getFlickrApiKey())"
         let url = URL(string: imageUrl)!
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let urlRequest = URLRequest(url: url)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
